@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="peek_height">150dp</dimen>
+    <dimen name="radius_big">300.0</dimen>
+    <item name="radius_small" type="dimen" format="float">15.0</item>
+
+</resources>

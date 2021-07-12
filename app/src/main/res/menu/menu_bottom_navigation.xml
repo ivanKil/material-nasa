@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/navigation_mrfoto"
+            android:icon="@drawable/ic_archive"
+            android:title="@string/mars_rover_photos" />
+        <item
+            android:id="@+id/navigation_apod"
+            android:icon="@drawable/ic_send"
+            android:title="@string/apod" />
+        <item
+            android:id="@+id/navigation_settings"
+            android:icon="@drawable/ic_send"
+            android:title="@string/settings" />
+    </group>
+</menu>
