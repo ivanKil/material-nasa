@@ -124,6 +124,7 @@ class ApodFragment : Fragment() {
             if (binding.inputLayout.visibility != View.GONE) {
                 binding.inputLayout.visibility = View.GONE
                 binding.bottomAppBar.fabCradleRoundedCornerRadius = 15f
+            } else {
                 binding.inputLayout.visibility = View.VISIBLE
                 binding.bottomAppBar.fabCradleRoundedCornerRadius = 300f
             }
