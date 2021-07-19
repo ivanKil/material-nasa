@@ -14,6 +14,7 @@ import java.io.IOException
 class RetrofitServices {
     companion object Factory {
         const val API_KEY: String = BuildConfig.NASA_API_KEY
+        const val BASE_URL = "https://api.nasa.gov/"
         private var retrofit: NasaAPI? = null
         fun create(): NasaAPI {
             if (retrofit == null) {
@@ -21,7 +22,7 @@ class RetrofitServices {
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(createOkHttpClient(ApiInterceptor()))
-                    .baseUrl("https://api.nasa.gov/").build()
+                    .baseUrl(BASE_URL).build()
                     .create(NasaAPI::class.java)
             }
             return retrofit!!

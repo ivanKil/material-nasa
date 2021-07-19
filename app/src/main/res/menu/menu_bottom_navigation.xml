@@ -4,11 +4,7 @@
         <item
             android:id="@+id/navigation_mrfoto"
             android:icon="@drawable/ic_archive"
-            android:title="@string/mars_rover_photos" />
-        <item
-            android:id="@+id/navigation_apod"
-            android:icon="@drawable/ic_send"
-            android:title="@string/apod" />
+            android:title="@string/photos" />
         <item
             android:id="@+id/navigation_settings"
             android:icon="@drawable/ic_send"

@@ -18,4 +18,10 @@
     <string name="red">Красная</string>
     <string name="black">Чёрная</string>
     <string name="select_theme">Выберите тему</string>
+    <string name="photos">Фотографии планет</string>
+    <string name="error">Ошибка</string>
+    <string name="empty_link">Ссылка пустая</string>
+    <string name="more">ещё</string>
+    <string name="earth">Земля</string>
+    <string name="mars">Марс</string>
 </resources>
