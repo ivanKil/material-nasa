@@ -47,6 +47,7 @@ class ApodFragment : Fragment() {
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
     private val WIKI_URL = "https://en.wikipedia.org/wiki/"
+    private var searchLayoutVisible = false;
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -71,7 +72,12 @@ class ApodFragment : Fragment() {
         }
         binding.chipGroupDay.setOnCheckedChangeListener { group, checkedId ->
             viewModel.getData(
-                checkedId
+                when (checkedId) {
+                    R.id.chip1 -> 1
+                    R.id.chip2 -> 2
+                    -1 -> 1
+                    else -> 3
+                }
             )
         }
         setBottomAppBar(view)
@@ -118,6 +124,7 @@ class ApodFragment : Fragment() {
                             error(R.drawable.ic_load_error_vector)
                             placeholder(R.drawable.ic_no_photo_vector)
                         }
+
                     }
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
                     binding.bottomDescr.bottomSheetDescriptionHeader.text = serverResponseData.title
@@ -155,13 +162,17 @@ class ApodFragment : Fragment() {
         setHasOptionsMenu(true)
         binding.bottomAppBar.fabCradleRoundedCornerRadius = 300f
         fab.setOnClickListener {
-            if (binding.inputLayout.visibility != View.GONE) {
+            fab.animate().rotation(if (searchLayoutVisible) 50f else 0f)
+            if (searchLayoutVisible/*binding.inputLayout.visibility != View.GONE*/) {
+                main.transitionToStart()
                 binding.inputLayout.visibility = View.GONE
                 binding.bottomAppBar.fabCradleRoundedCornerRadius = 15f
             } else {
+                binding.main.transitionToEnd()
                 binding.inputLayout.visibility = View.VISIBLE
                 binding.bottomAppBar.fabCradleRoundedCornerRadius = 300f
             }
+            searchLayoutVisible = !searchLayoutVisible
         }
     }
 

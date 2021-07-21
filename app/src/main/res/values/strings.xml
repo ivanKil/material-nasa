@@ -24,4 +24,6 @@
     <string name="more">ещё</string>
     <string name="earth">Земля</string>
     <string name="mars">Марс</string>
+    <string name="photo_rover">Фото с марсохода</string>
+    <string name="info_rover"> Фото с марсохода %1$s \nСтатус: %2$s</string>
 </resources>
