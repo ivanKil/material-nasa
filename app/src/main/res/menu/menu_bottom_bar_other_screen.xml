@@ -7,4 +7,9 @@
         android:icon="@drawable/ic_search"
         android:title="@string/search"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/app_bar_photos"
+        android:icon="@drawable/ic_baseline_photo_library_24"
+        android:title="@string/photos"
+        app:showAsAction="ifRoom" />
 </menu>

@@ -1,25 +1,42 @@
 package geekbarains.nasa.ui.picture
 
 //import coil.api.load
+
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings.PluginState
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import com.lessons.nasa.model.ApodData
+import geekbarains.material.ui.photos.PhotosActivity
+import geekbarains.material.ui.settings.SettingsFragment
 import geekbarains.nasa.R
 import geekbarains.nasa.databinding.MainFragmentBinding
 import geekbarains.nasa.ui.MainActivity
-
 import kotlinx.android.synthetic.main.main_fragment.*
 import retrofit2.HttpException
+
+
+fun View.snackBarError(string: String) {
+    var sb = Snackbar.make(
+        this,
+        "${resources.getString(R.string.error)} : $string",
+        Snackbar.LENGTH_LONG
+    )
+    sb.view.setBackgroundColor(ContextCompat.getColor(context, R.color.red));
+    sb.show()
+}
 
 class ApodFragment : Fragment() {
     private val TAG = "PictureOfTheDayFragment"
@@ -67,9 +84,11 @@ class ApodFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_settings -> toast(getString(R.string.settings))
-            // activity?.supportFragmentManager?.beginTransaction()
-            //?.add(R.id.container, ChipsFragment())?.addToBackStack(null)?.commit()
+            R.id.app_bar_settings -> requireActivity().supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.container, SettingsFragment.newInstance())
+                ?.addToBackStack(null)?.commit()
+            R.id.app_bar_photos ->
+                requireActivity().let { startActivity(Intent(it, PhotosActivity::class.java)) }
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
@@ -85,17 +104,22 @@ class ApodFragment : Fragment() {
                 val serverResponseData = data.serverResponseData
                 val url = serverResponseData.url
                 if (url.isNullOrEmpty()) {
-                    //showError("Сообщение, что ссылка пустая")
-                    toast("Link is empty")
+                    toast(resources.getString(R.string.empty_link))
                 } else {
-                    //showSuccess()
-                    image_view.load(url) {
-                        lifecycle(this@ApodFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
+                    if (url.contains("www.youtube.com")) {
+                        showVideo(url, image_view.height)
+                        image_view.visibility = View.INVISIBLE
+                        videoView1.visibility = View.VISIBLE
+                    } else {
+                        image_view.visibility = View.VISIBLE
+                        videoView1.visibility = View.INVISIBLE
+                        image_view.load(url) {
+                            lifecycle(this@ApodFragment)
+                            error(R.drawable.ic_load_error_vector)
+                            placeholder(R.drawable.ic_no_photo_vector)
+                        }
                     }
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-                    // bottomSheetBehavior.peekHeight = 500
                     binding.bottomDescr.bottomSheetDescriptionHeader.text = serverResponseData.title
                     binding.bottomDescr.bottomSheetDescription.text = serverResponseData.explanation
                 }
@@ -113,6 +137,16 @@ class ApodFragment : Fragment() {
                 image_view.load("")
             }
         }
+    }
+
+    private fun showVideo(url: String, height: Int) {
+        videoView1.getSettings().setJavaScriptEnabled(true)
+        videoView1.getSettings().setPluginState(PluginState.ON)
+        videoView1.loadUrl(url)
+        videoView1.setWebChromeClient(WebChromeClient())
+        videoView1.setLayoutParams(
+            ConstraintLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height)
+        )
     }
 
     private fun setBottomAppBar(view: View) {
