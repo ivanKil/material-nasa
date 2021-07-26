@@ -81,6 +81,6 @@ class PhotosViewModel(
     }
 
 
-    fun getNextImageMars() =
-        if (marsList != null && marsList!!.size > curImg++) marsList!![curImg].img_src else ""
+    fun getNextMarsInfo() =
+        if (marsList != null && marsList!!.size > curImg++) marsList!![curImg] else null
 }

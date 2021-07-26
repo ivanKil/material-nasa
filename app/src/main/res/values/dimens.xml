@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_left_1">15dp</dimen>
     <dimen name="peek_height">150dp</dimen>
     <dimen name="radius_big">300.0</dimen>
+    <dimen name="big_text">29sp</dimen>
     <item name="radius_small" type="dimen" format="float">15.0</item>
 
 </resources>

@@ -52,7 +52,7 @@ open class EarthFragment : Fragment() {
         when (data) {
             is EpicListData.Success<*> -> {
                 progressCircleDeterminate.visibility = View.GONE
-                setImageUrl(getUrl(data), this)
+                onDataSuccess(data)
             }
             is EpicListData.Loading -> {
                 progressCircleDeterminate.visibility = View.VISIBLE
@@ -67,5 +67,9 @@ open class EarthFragment : Fragment() {
                 img_photo.load("")
             }
         }
+    }
+
+    open fun onDataSuccess(epicListData: EpicListData.Success<*>) {
+        setImageUrl(getUrl(epicListData), this)
     }
 }

@@ -20,4 +20,5 @@ class Epic(
 )
 
 class MarsList(val photos: List<Mars>)
-class Mars(val img_src: String)
+class Mars(val img_src: String, val rover: Rover)
+class Rover(val name: String, val status: String)
