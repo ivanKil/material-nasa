@@ -4,8 +4,14 @@ package geekbarains.nasa.ui.picture
 
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
+import android.text.style.StyleSpan
 import android.util.Log
 import android.view.*
 import android.webkit.WebChromeClient
@@ -133,7 +139,8 @@ class ApodFragment : Fragment() {
                     }
                     bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
                     binding.bottomDescr.bottomSheetDescriptionHeader.text = serverResponseData.title
-                    binding.bottomDescr.bottomSheetDescription.text = serverResponseData.explanation
+                    setTextDescription(serverResponseData.explanation)
+                    //binding.bottomDescr.bottomSheetDescription.text = serverResponseData.explanation
                 }
             }
             is ApodData.Loading -> {
@@ -149,6 +156,23 @@ class ApodFragment : Fragment() {
                 image_view.load("")
             }
         }
+    }
+
+    private fun setTextDescription(text: String?) {
+        text?.let {
+            val spannable = SpannableStringBuilder(text)
+            spannable.setSpan(
+                ForegroundColorSpan(Color.DKGRAY),
+                0, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            spannable.setSpan(
+                StyleSpan(Typeface.ITALIC), 0, spannable.length,
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+            binding.bottomDescr.bottomSheetDescription.text = spannable
+        }
+
     }
 
     private fun showVideo(url: String, height: Int) {

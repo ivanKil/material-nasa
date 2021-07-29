@@ -7,6 +7,7 @@
     <dimen name="todo_header">25sp</dimen>
     <dimen name="todo_margin">10dp</dimen>
     <dimen name="margin_tool">30dp</dimen>
+    <dimen name="pagging_descr">10dp</dimen>
     <item name="radius_small" type="dimen" format="float">15.0</item>
 
 </resources>

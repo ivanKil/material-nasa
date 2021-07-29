@@ -3,33 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemContainer"
-    android:background="@android:color/white"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@android:color/white">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/todoHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="Дело 1"
+        android:layout_margin="@dimen/todo_margin"
+        android:fontFamily="@font/roboto_mono_thin_italic"
         android:textSize="@dimen/todo_header"
         android:textStyle="bold"
-        android:layout_margin="@dimen/todo_margin"
+        app:layout_constraintEnd_toStartOf="@id/removeItemImageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/removeItemImageView" />
+        tools:text="Дело 1" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/todoHeaderEdit"
-        android:textSize="25sp"
         android:layout_width="0dp"
-        android:textStyle="bold"
-        android:layout_margin="@dimen/todo_header"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="@dimen/todo_header"
+        android:textSize="25sp"
+        android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toStartOf="@id/removeItemImageView" />
+        app:layout_constraintEnd_toStartOf="@id/removeItemImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier1"
@@ -43,12 +44,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        tools:text="Купить молоко, сыр масло "
         android:textColor="@color/black"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier1"
+        tools:text="Купить молоко, сыр масло "
         tools:visibility="visible" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -76,9 +77,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_tool"
-        app:layout_constraintEnd_toStartOf="@+id/dragHandleImageView"
         app:layout_constraintBottom_toBottomOf="@+id/todoHeader"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/dragHandleImageView"
         app:layout_constraintTop_toTopOf="@+id/todoHeader"
         app:srcCompat="@drawable/ic_archive" />
 
@@ -99,17 +100,17 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_baseline_save_24"
         android:visibility="invisible"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
         android:background="@drawable/ic_baseline_edit_24"
-        app:layout_constraintTop_toBottomOf="@id/barrier2"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/barrier2" />
 
     <View
         android:layout_width="match_parent"
@@ -120,7 +121,7 @@
 
     <androidx.constraintlayout.widget.Group
         android:id="@+id/descr_group"
-        app:constraint_referenced_ids="editButton,todoDescription"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_width="0dp" />
+        app:constraint_referenced_ids="editButton,todoDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>
