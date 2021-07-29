@@ -26,4 +26,5 @@
     <string name="mars">Марс</string>
     <string name="photo_rover">Фото с марсохода</string>
     <string name="info_rover"> Фото с марсохода %1$s \nСтатус: %2$s</string>
+    <string name="todolist">Список дел</string>
 </resources>
