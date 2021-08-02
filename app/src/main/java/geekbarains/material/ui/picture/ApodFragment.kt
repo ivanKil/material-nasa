@@ -2,6 +2,7 @@ package geekbarains.nasa.ui.picture
 
 //import coil.api.load
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
 import com.lessons.nasa.model.ApodData
 import geekbarains.material.ui.photos.PhotosActivity
@@ -71,6 +73,9 @@ class ApodFragment : Fragment() {
             })
         }
         binding.chipGroupDay.setOnCheckedChangeListener { group, checkedId ->
+            ObjectAnimator.ofFloat(view.findViewById<Chip>(checkedId), "rotation", 5f, -5f, 0f)
+                .setDuration(300)
+                .start()
             viewModel.getData(
                 when (checkedId) {
                     R.id.chip1 -> 1

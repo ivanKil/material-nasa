@@ -14,12 +14,10 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="parent"
         android:gravity="center"
-        app:layout_constraintVertical_chainStyle="packed"
         android:textSize="@dimen/big_text"
-        android:text="@string/select_theme"
-        app:layout_constraintBottom_toTopOf="@id/chip_theme" />
+        android:text="@string/select_theme" />
 
     <com.google.android.material.chip.ChipGroup
         app:layout_constraintVertical_chainStyle="packed"
@@ -30,8 +28,7 @@
         app:singleSelection="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_select_theme"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintTop_toBottomOf="parent">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_green"
