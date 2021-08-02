@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import geekbarains.material.ui.photos.PhotosActivity
 import geekbarains.material.ui.settings.SettingsFragment
+import geekbarains.material.ui.todolist.ToDoListActivity
 import geekbarains.nasa.R
 import kotlinx.android.synthetic.main.bottom_navigation_layout.*
 
@@ -36,6 +37,16 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                     else
                         activity?.supportFragmentManager?.beginTransaction()
                             ?.replace(R.id.container, frSettings)
+                R.id.navigation_todolist -> {
+                    requireActivity().let {
+                        startActivity(
+                            Intent(
+                                it,
+                                ToDoListActivity::class.java
+                            )
+                        )
+                    }
+                }
             }
             dismiss()
             true
