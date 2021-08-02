@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="chipStyle">@style/AppTheme.Chip</item>
         <!--<item name="android:background">@color/red5</item>-->
+        <item name="android:fontFamily">@font/aclonica</item>
     </style>
 
     <style name="AppTheme.Chip" parent="Widget.MaterialComponents.Chip.Choice">
@@ -23,6 +24,7 @@
 
     <style name="AppTheme.EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:fontFamily">@font/roboto_mono_thin_italic</item>
     </style>
 
     <style name="AppTheme2" parent="AppTheme">
@@ -48,6 +50,5 @@
     <style name="AppTheme2.EditTextStyle" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/t2_colorPrimaryDark</item>
     </style>
-
 
 </resources>
