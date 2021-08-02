@@ -9,6 +9,8 @@
         <item name="chipStyle">@style/AppTheme.Chip</item>
         <!--<item name="android:background">@color/red5</item>-->
         <item name="android:fontFamily">@font/aclonica</item>
+        <!--<item name="android:windowBackground">@drawable/splash</item>-->
+
     </style>
 
     <style name="AppTheme.Chip" parent="Widget.MaterialComponents.Chip.Choice">
